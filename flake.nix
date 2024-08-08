@@ -12,6 +12,7 @@
       devShell = pkgs.mkShell {
         buildInputs = [
           pkgs.poetry
+          pkgs.pre-commit
         ];
       };
     });

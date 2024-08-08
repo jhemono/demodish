@@ -10,6 +10,8 @@ package-mode = false
 python = "^3.11"
 Django = "^5.0.8"
 
+[tool.isort]
+profile = "black"
 
 [build-system]
 requires = ["poetry-core"]
