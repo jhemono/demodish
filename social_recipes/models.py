@@ -11,6 +11,9 @@ class Profile(models.Model):
     name = models.CharField(max_length=150)
     bio = models.TextField()
 
+    def __str__(self):
+        return f"@{self.handle}"
+
 
 class Recipe(models.Model):
     """Model for cooking recipes."""
@@ -22,6 +25,9 @@ class Recipe(models.Model):
     meal_types = models.ManyToManyField("MealType")
     cuisines = models.ManyToManyField("Cuisine")
     servings = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return self.title
 
 
 class RecipeStep(models.Model):
@@ -73,6 +79,9 @@ class Unit(models.Model):
     factor = models.FloatField()
     offset = models.FloatField()
 
+    def __str__(self):
+        return self.name
+
 
 class Tag(models.Model):
     """Abtract model for anything that categories recipes."""
@@ -85,6 +94,9 @@ class Tag(models.Model):
     description = models.TextField(blank=True)
     icon_image = models.ImageField(_("icon"), blank=True)
     banner_image = models.ImageField(_("banner"), blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Food(Tag):

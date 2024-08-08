@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Cuisine, MealType, Unit
+
+for m in (Cuisine, MealType, Unit):
+    admin.site.register(m)
