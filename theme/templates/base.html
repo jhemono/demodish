@@ -1,0 +1,28 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>DemoDish</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% tailwind_css %}
+    </head>
+
+    <body class="bg-gray-50 font-sans leading-normal tracking-normal">
+        <header class="bg-orange-100 border-b border-orange-300 shadow-md">
+            <ul class="container mx-auto flex justify-center text-2xl">
+                <li><a href="{%url 'social_recipes:index' %}">DemoDish</a></li>
+                <li><a href="{% url 'social_recipes:index' %}">Home</a></li>
+                <li><a href="{% url 'social_recipes:add_recipe' 'jhemono' %}">Add</a></li>
+                <li><a href="{% url 'social_recipes:explore' %}">Explore</a></li>
+                <li><a href="{% url 'social_recipes:show_profile' 'jhemono' %}">Julien</a></li>
+            </ul>
+        </header>
+        <section>
+            {% block content %}
+                <h1>DemoDish</h1>
+            {% endblock %}
+        </section>
+    </body>
+</html>
