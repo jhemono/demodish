@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "social_recipes.apps.SocialRecipesConfig",
+    "theme",
+    "tailwind",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -67,6 +69,8 @@ TEMPLATES = [
         },
     },
 ]
+
+TAILWIND_APP_NAME = "theme"
 
 WSGI_APPLICATION = "demodish.wsgi.application"
 

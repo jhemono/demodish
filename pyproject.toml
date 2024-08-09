@@ -10,6 +10,7 @@ package-mode = false
 python = "^3.11"
 Django = "^5.0.8"
 pillow = "^10.4.0"
+django-tailwind = "^3.8.0"
 
 [tool.isort]
 profile = "black"
