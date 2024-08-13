@@ -40,18 +40,22 @@ class Recipe(models.Model):
 class RecipeStep(models.Model):
     """Model for instruction steps of recipes."""
 
+    class Meta:
+        order_with_respect_to = "recipe"
+
     recipe = models.ForeignKey(Recipe, related_name="steps", on_delete=models.CASCADE)
-    sequence = models.PositiveIntegerField()
     description = models.TextField()
 
 
 class RecipeIngredient(models.Model):
     """Model for ingredients and quantities used in recipes."""
 
+    class Meta:
+        order_with_respect_to = "step"
+
     step = models.ForeignKey(
         RecipeStep, related_name="ingredients", on_delete=models.CASCADE
     )
-    sequence = models.PositiveIntegerField()
     food = models.ForeignKey("Food", on_delete=models.RESTRICT)
     quantity = models.FloatField()
     unit = models.ForeignKey("Unit", on_delete=models.RESTRICT)
