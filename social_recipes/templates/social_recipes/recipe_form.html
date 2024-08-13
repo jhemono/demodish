@@ -1,4 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Recipe</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ recipe_form }}
+    {{ step_formset.management_form }}
+    {% for step_form in step_formset %}
+        {{ step_form}}
+        {{ step_form.nested_ingredient_formset.management_form }}
+        {% for ingredient_form in step_form.nested_ingredient_formset %}
+            {{ ingredient_form }}
+        {% endfor %}
+        {{ step_form.nested_cooking_formset.management_form }}
+        {% for cooking_form in step_form.nested_cooking_formset %}
+            {{ cooking_form }}
+        {% endfor %}
+    {% endfor %}
+    <input type="submit" value="Submit">
+</form>
 {% endblock %}

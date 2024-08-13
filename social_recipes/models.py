@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 
@@ -35,6 +36,14 @@ class Recipe(models.Model):
             "social_recipes:show_recipe",
             kwargs={"handle": self.profile.handle, "slug": self.slug},
         )
+
+    def save(self, **kwargs):
+        self.slug = slugify(self.title)
+        if (
+            update_fields := kwargs.get("update_fields")
+        ) is not None and "title" in update_fields:
+            update_fields = {"slug"}.union(update_fields)
+        super().save(**kwargs)
 
 
 class RecipeStep(models.Model):

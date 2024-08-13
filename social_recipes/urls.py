@@ -5,6 +5,7 @@ from . import views
 app_name = "social_recipes"
 urlpatterns = [
     path("", views.index, name="index"),
+    path("u/<str:handle>/r/add", views.create_recipe, name="add_recipe"),
     path(
         "u/<str:handle>/r/<str:slug>",
         views.RecipeDetailView.as_view(),
