@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import DetailView
+
+from .models import Profile, Recipe
 
 
 def index(request):
@@ -7,6 +10,10 @@ def index(request):
 
 def create_recipe(request, handle: str):
     return render(request, "social_recipes/recipe_form.html")
+
+
+class RecipeDetailView(DetailView):
+    model = Recipe
 
 
 def explore(request):

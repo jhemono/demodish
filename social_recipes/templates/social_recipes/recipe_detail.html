@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ object.title }}</h2>
+<ol>
+    {% for step in object.steps.all %}
+    <li>{{ step.description }}</li>
+    {% endfor %}
+</ol>
+{% endblock %}
